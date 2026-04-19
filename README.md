@@ -71,4 +71,4 @@ the generator **without** `--drop-extensions` to get a standalone module.
 
 ## License
 
-AGPL-3 (inherited from OCA/payroll).
+LGPL-3 (inherited from OCA/payroll, which is LGPL-3 — same license Odoo CE uses).
