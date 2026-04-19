@@ -1,0 +1,33 @@
+[project]
+name = "odoo-bringout-ba_payroll"
+version = "16.0.1.6.0"
+description = "Generated Bosnia-scoped payroll stack — derived from OCA payroll by rename_oca_payroll.py; coexists with Odoo EE hr_payroll and OCA payroll in the same DB"
+authors = [
+    { name = "Ernad Husremovic", email = "hernad@bring.out.ba" }
+]
+dependencies = [
+    "odoo>=16.0",
+]
+readme = "README.md"
+requires-python = ">= 3.11"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "License :: OSI Approved :: GNU Affero General Public License v3",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 16.0",
+    "Topic :: Office/Business",
+]
+
+[project.urls]
+homepage = "https://github.com/bringout/0"
+repository = "https://github.com/bringout/0"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["ba_payroll"]
