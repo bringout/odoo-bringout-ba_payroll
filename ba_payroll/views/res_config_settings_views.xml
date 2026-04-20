@@ -21,7 +21,7 @@
                     class="app_settings_block"
                     data-string="Payroll"
                     string="Payroll"
-                    data-key="payroll"
+                    data-key="ba_payroll"
                     groups="ba_payroll.group_payroll_manager"
                 >
                     <h2>Accounting</h2>
@@ -130,7 +130,7 @@
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
         <field name="target">inline</field>
-        <field name="context">{'module' : 'payroll'}</field>
+        <field name="context">{'module' : 'ba_payroll'}</field>
     </record>
     <menuitem
         id="menu_payroll_global_settings"
