@@ -10,22 +10,28 @@ from odoo.tests import common
 
 class TestHrPayrollCancel(common.TransactionCase):
     def setUp(self):
-        super(TestHrPayrollCancel, self).setUp()
+        super().setUp()
         # Set system parameter
         self.env["ir.config_parameter"].sudo().set_param(
             "ba_payroll.allow_cancel_payslips", True
         )
         self.payslip_action_id = self.ref("ba_payroll.hr_payslip_menu")
-        self.res_partner_bank = self.env["res.partner.bank"].create(
+        # Create a basic employee and initialize its current contract (hr.version)
+        self.hr_employee_anita = self.env["hr.employee"].create({"name": "Anita"})
+        # minimal payroll structure to allow payslip computation
+        structure = self.env["ba.hr.payroll.structure"].create(
+            {"name": "Test Structure", "code": "TST"}
+        )
+        # Update the default version created on employee to avoid duplicate date_version
+        self.hr_employee_anita.version_id.write(
             {
-                "acc_number": "001-9876543-21",
-                "partner_id": self.ref("base.res_partner_12"),
-                "acc_type": "bank",
-                "bank_id": self.ref("base.res_bank_1"),
+                "contract_date_start": datetime.now().date(),
+                "name": "Contract for Anita",
+                "wage": 3000.0,
+                "struct_id": structure.id,
             }
         )
-        self.hr_employee_anita = self.env.ref("hr.employee_mit")
-        self.hr_contract_anita = self.env.ref("hr_contract.hr_contract_mit")
+        self.hr_contract_anita = self.hr_employee_anita.version_id
         self.hr_payslip = self.env["ba.hr.payslip"].create(
             {
                 "employee_id": self.hr_employee_anita.id,

@@ -13,10 +13,7 @@
                     </h1>
                     <group>
                         <group>
-                            <field
-                                name="code"
-                                attrs="{'required': [('require_code','=',True)]}"
-                            />
+                            <field name="code" required="require_code" />
                             <field name="parent_id" />
                         </group>
                     </group>
@@ -24,19 +21,19 @@
                         <page string="Salary Rules">
                             <separator string="Associated Salary Rules" />
                             <field name="salary_rules_ids" nolabel="1" create="false">
-                                <tree>
+                                <list>
                                     <field name="code" decoration-bf="1" />
                                     <field name="name" />
-                                </tree>
+                                </list>
                             </field>
                         </page>
                     </notebook>
                     <group string="Notes">
                         <field
-                            colspan="2"
                             name="note"
                             placeholder="Add your notes or category explanation here..."
                             nolabel="1"
+                            colspan="2"
                         />
                     </group>
                 </sheet>
@@ -44,14 +41,14 @@
         </field>
     </record>
     <record id="hr_salary_rule_category_view_tree" model="ir.ui.view">
-        <field name="name">hr.salary.rule.category.tree</field>
+        <field name="name">hr.salary.rule.category.list</field>
         <field name="model">ba.hr.salary.rule.category</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="code" />
-                <field name="parent_id" invisible="1" />
-            </tree>
+                <field name="parent_id" column_invisible="1" />
+            </list>
         </field>
     </record>
     <record id="hr_salary_rule_category_view_search" model="ir.ui.view">

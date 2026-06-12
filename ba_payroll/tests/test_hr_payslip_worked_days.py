@@ -1,8 +1,9 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
+import time
 from datetime import date, datetime
 
-from odoo.tests.common import Form
+from odoo.tests import Form
 
 from .common import TestPayslipBase
 
@@ -18,8 +19,7 @@ class TestWorkedDays(TestPayslipBase):
         self.holiday_type = self.LeaveType.create(
             {
                 "name": "TestLeaveType",
-                "code": "TESTLV",
-                "allocation_validation_type": "no",
+                "allocation_validation_type": "no_validation",
                 "leave_validation_type": "no_validation",
             }
         )
@@ -54,21 +54,24 @@ class TestWorkedDays(TestPayslipBase):
             )
 
     def _common_contract_leave_setup(self):
-
         self.richard_emp.resource_id.calendar_id = self.full_calendar
-        self.richard_emp.contract_ids.resource_calendar_id = self.full_calendar
+        self.richard_emp.version_ids.resource_calendar_id = self.full_calendar
 
         # I put all eligible contracts (including Richard's) in an "open" state
         self.apply_contract_cron()
-        # Create allocation
-        allocation = self.env["hr.leave.allocation"].create(
+
+        self.env["hr.leave.allocation"].create(
             {
-                "holiday_status_id": self.holiday_type.id,
+                "name": "Annual Time Off",
                 "employee_id": self.richard_emp.id,
-                "date_from": date.today(),
+                "holiday_status_id": self.holiday_type.id,
+                "number_of_days": 20,
+                "state": "confirm",
+                "date_from": time.strftime("%Y-01-01"),
+                "date_to": time.strftime("%Y-12-31"),
             }
         )
-        allocation.action_confirm()
+
         # Create the leave
         self.LeaveRequest.create(
             {
@@ -82,7 +85,6 @@ class TestWorkedDays(TestPayslipBase):
         )
 
     def test_worked_days_negative(self):
-
         self._common_contract_leave_setup()
 
         # Set system parameter
@@ -97,10 +99,10 @@ class TestWorkedDays(TestPayslipBase):
 
         worked_days_codes = richard_payslip.worked_days_line_ids.mapped("code")
         self.assertIn(
-            "TESTLV", worked_days_codes, "The leave is in the 'Worked Days' list"
+            "GLOBAL", worked_days_codes, "The leave is in the 'Worked Days' list"
         )
         wdl_ids = richard_payslip.worked_days_line_ids.filtered(
-            lambda x: x.code == "TESTLV"
+            lambda x: x.code == "GLOBAL"
         )
         self.assertEqual(len(wdl_ids), 1, "There is only one line matching the leave")
         self.assertEqual(
@@ -115,7 +117,6 @@ class TestWorkedDays(TestPayslipBase):
         )
 
     def test_leaves_positive(self):
-
         self._common_contract_leave_setup()
 
         # Set system parameter
@@ -130,10 +131,10 @@ class TestWorkedDays(TestPayslipBase):
 
         worked_days_codes = richard_payslip.worked_days_line_ids.mapped("code")
         self.assertIn(
-            "TESTLV", worked_days_codes, "The leave is in the 'Worked Days' list"
+            "GLOBAL", worked_days_codes, "The leave is in the 'Worked Days' list"
         )
         wdl_ids = richard_payslip.worked_days_line_ids.filtered(
-            lambda x: x.code == "TESTLV"
+            lambda x: x.code == "GLOBAL"
         )
         self.assertEqual(len(wdl_ids), 1, "There is only one line matching the leave")
         self.assertEqual(

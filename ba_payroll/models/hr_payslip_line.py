@@ -1,6 +1,6 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -29,7 +29,7 @@ class HrPayslipLine(models.Model):
     salary_rule_id = fields.Many2one("ba.hr.salary.rule", string="Rule", required=True)
     employee_id = fields.Many2one("hr.employee", string="Employee", required=True)
     contract_id = fields.Many2one(
-        "hr.contract", string="Contract", required=True, index=True
+        "hr.version", string="Contract", required=True, index=True
     )
     rate = fields.Float(string="Rate (%)", digits="BA Payroll Rate", default=100.0)
     amount = fields.Float(digits="BA Payroll")
@@ -55,15 +55,17 @@ class HrPayslipLine(models.Model):
         for line in self:
             if line.parent_rule_id:
                 parent_line = line.slip_id.line_ids.filtered(
-                    lambda l: l.salary_rule_id == line.parent_rule_id
-                    and l.contract_id == line.contract_id
-                    and l.slip_id == line.slip_id
+                    lambda record, line=line: record.salary_rule_id
+                    == line.parent_rule_id
+                    and record.contract_id == line.contract_id
+                    and record.slip_id == line.slip_id
                 )
                 if parent_line and len(parent_line) > 1:
-                    raise UserError(
-                        _("Recursion error. Only one line should be parent of %s")
-                        % line.parent_rule_id.name
+                    msg = self.env._(
+                        "Recursion error. Only one line should be parent of %(rule)s",
+                        rule=line.parent_rule_id.name,
                     )
+                    raise UserError(msg)
                 line.parent_line_id = (
                     parent_line[0].id if len(parent_line) == 1 else False
                 )
@@ -90,6 +92,6 @@ class HrPayslipLine(models.Model):
                 )
                 if not values["contract_id"]:
                     raise UserError(
-                        _("You must set a contract to create a payslip line.")
+                        self.env._("You must set a contract to create a payslip line.")
                     )
-        return super(HrPayslipLine, self).create(vals_list)
+        return super().create(vals_list)

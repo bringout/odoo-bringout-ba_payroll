@@ -45,7 +45,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid ""
 "\n"
 "Wrong python code defined for salary rule %(nm)s (%(code)s) for employee "
@@ -58,7 +57,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid ""
 "\n"
 "Wrong python condition defined for salary rule %(nm)s (%(code)s) for "
@@ -71,7 +69,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
-#, python-format
 msgid "%s (copy)"
 msgstr "%s (kópia)"
 
@@ -222,30 +219,31 @@ msgstr ""
 #: model:mail.template,body_html:payroll.mail_template_hr_payslip
 msgid ""
 "<div style=\"margin: 0px; padding: 0px;\">\n"
-"        <p style=\"margin: 0px; padding: 0px; font-size: 13px;\">\n"
-"            Dear <t t-out=\"object.employee_id.name\"></t>,\n"
-"            <br><br>\n"
+"                    <p style=\"margin: 0px; padding: 0px; font-size: 13px;"
+"\">\n"
+"            Dear <t t-out=\"object.employee_id.name\"/>,\n"
+"            <br/><br/>\n"
 "            Please find attached the payslip for <t t-out=\"object."
-"payslip_run_id.name\"></t>.\n"
-"            <br><br>\n"
+"payslip_run_id.name\"/>.\n"
+"            <br/><br/>\n"
 "            Do not hesitate to contact us if you have any questions.\n"
-"            <br><br>\n"
-"            <t t-out=\"user.signature\"></t>\n"
+"            <br/><br/>\n"
+"            <t t-out=\"user.signature\"/>\n"
 "        </p>\n"
-"    </div>\n"
+"                </div>\n"
 "            "
 msgstr ""
 
 #. module: payroll
 #: model_terms:ir.ui.view,arch_db:payroll.view_hr_payslip_by_employees
 msgid ""
-"<span colspan=\"2\" nolabel=\"1\">\n"
-"                            This wizard will generate payslips for all "
-"selected employee(s)\n"
-"                            based on the dates and credit note\n"
-"                            specified\n"
-"                            on Payslips Run.\n"
-"                        </span>"
+"<span colspan=\"4\" nolabel=\"1\">\n"
+"                        This wizard will generate payslips for all selected "
+"employee(s)\n"
+"                        based on the dates and credit note\n"
+"                        specified\n"
+"                        on Payslips Run.\n"
+"                    </span>"
 msgstr ""
 
 #. module: payroll
@@ -426,6 +424,7 @@ msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_res_config_settings__allow_cancel_payslips
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
 msgid "Allow canceling confirmed payslips"
 msgstr ""
 
@@ -436,6 +435,7 @@ msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_res_config_settings__allow_edit_payslip_lines
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
 msgid "Allow editing payslip lines"
 msgstr ""
 
@@ -569,7 +569,6 @@ msgstr "Zrušiť výplatnú pásku"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Cannot cancel a payslip that is done."
 msgstr ""
 
@@ -672,7 +671,6 @@ msgstr "Spoločnosti"
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__company_id
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_input__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_line__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__company_id
 #: model:ir.model.fields,field_description:payroll.field_hr_salary_rule__company_id
@@ -735,6 +733,7 @@ msgstr "Potvrď"
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_res_config_settings__prevent_compute_on_confirm
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
 msgid "Confirm payslips without recomputing"
 msgstr ""
 
@@ -987,14 +986,12 @@ msgstr "Zamestnanci"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule_category.py:0
-#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rule Category."
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid "Error! You cannot create recursive hierarchy of Salary Rules."
 msgstr ""
 
@@ -1049,7 +1046,6 @@ msgstr "Napríklad, zadajte 50.0 na aplikovanie percent  50%"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/report/report_contribution_register.py:0
-#, python-format
 msgid "Form content is missing, this report cannot be printed."
 msgstr ""
 
@@ -1077,7 +1073,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Global Leaves"
 msgstr "Globálne voľná"
 
@@ -1255,23 +1250,6 @@ msgstr ""
 "inputs.SALEURO.amount * contract.wage*0.01."
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_contribution_register____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_change_state____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_employees____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_input____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_line____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_worked_days____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_rule_input____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_salary_rule____last_update
-#: model:ir.model.fields,field_description:payroll.field_hr_salary_rule_category____last_update
-#: model:ir.model.fields,field_description:payroll.field_payslip_lines_contribution_register____last_update
-msgid "Last Modified on"
-msgstr "Posledná modifikácia"
-
-#. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_hr_contribution_register__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payroll_structure__write_uid
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__write_uid
@@ -1307,6 +1285,7 @@ msgstr "Naposledy upravované"
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_res_config_settings__leaves_positive
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
 msgid "Leaves with positive values"
 msgstr ""
 
@@ -1323,12 +1302,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__paid
 msgid "Made Payment Order ? "
 msgstr "Made Payment Order ?  "
-
-#. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip__message_main_attachment_id
-#: model:ir.model.fields,field_description:payroll.field_hr_payslip_run__message_main_attachment_id
-msgid "Main Attachment"
-msgstr ""
 
 #. module: payroll
 #: model:ir.module.category,description:payroll.module_category_payroll
@@ -1435,7 +1408,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Normal Working Days paid at 100%"
 msgstr "Normálne pracovné dni zaplatené na 100%"
 
@@ -1487,7 +1459,6 @@ msgstr "Úradník"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
-#, python-format
 msgid ""
 "Only draft payslips can be verified,the payslip %(nm)s is in %(st)s state"
 msgstr ""
@@ -1495,7 +1466,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
-#, python-format
 msgid ""
 "Only payslips in states verify or draft can be confirmed, the payslip %(nm)s "
 "is in %(st)s state"
@@ -1504,7 +1474,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
-#, python-format
 msgid ""
 "Only rejected payslips can be reset to draft, the payslip %(nm)s is in "
 "%(st)s state"
@@ -1590,11 +1559,6 @@ msgid "Payroll Accounting"
 msgstr ""
 
 #. module: payroll
-#: model:ir.model.fields,field_description:payroll.field_hr_leave_type__code
-msgid "Payroll Code"
-msgstr ""
-
-#. module: payroll
 #: model:ir.model,name:payroll.model_report_payroll_report_contributionregister
 msgid "Payroll Contribution Register Report"
 msgstr ""
@@ -1619,7 +1583,6 @@ msgstr "Výplatná páska"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Payslip 'Date From' must be earlier than 'Date To'."
 msgstr ""
 
@@ -1658,9 +1621,7 @@ msgid "Payslip Input"
 msgstr "Vstup výplatnej pásky"
 
 #. module: payroll
-#: model:ir.actions.act_window,name:payroll.hr_payslip_input_action
 #: model:ir.model.fields,field_description:payroll.field_hr_payslip__input_line_ids
-#: model:ir.ui.menu,name:payroll.hr_payslip_input_menu
 msgid "Payslip Inputs"
 msgstr "Vstupy výplatnej pásky"
 
@@ -1721,7 +1682,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:payroll.hr_employee_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_run_view_form
 #: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_search
-#, python-format
 msgid "Payslips"
 msgstr "Payslips "
 
@@ -1855,7 +1815,6 @@ msgstr "Stupeň (%)"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
-#, python-format
 msgid "Recursion error. Only one line should be parent of %s"
 msgstr ""
 
@@ -1878,14 +1837,12 @@ msgstr "Refundácia"
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Refund Payslip"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Refund: %s"
 msgstr ""
 
@@ -1923,6 +1880,7 @@ msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields,field_description:payroll.field_res_config_settings__require_code_and_category
+#: model_terms:ir.ui.view,arch_db:payroll.res_config_settings_view_form
 msgid "Require code/category on rules, categories and structures"
 msgstr ""
 
@@ -2003,7 +1961,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "Salary Slip of %(name)s for %(dt)s"
 msgstr ""
 
@@ -2043,11 +2000,6 @@ msgstr "Hľadať výplatné pásky"
 #: model_terms:ir.ui.view,arch_db:payroll.hr_salary_rule_view_search
 msgid "Search Salary Rule"
 msgstr "Hľadať platové pravidlo"
-
-#. module: payroll
-#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_input_view_search
-msgid "Search all"
-msgstr ""
 
 #. module: payroll
 #: model:ir.model.fields.selection,name:payroll.selection__hr_contract__schedule_pay__semi-annually
@@ -2177,7 +2129,6 @@ msgstr "Minimálne množstvo, uplatnené pre toto pravidlo."
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payslip_change_state.py:0
-#, python-format
 msgid "The payslip %(nm)s is already canceled please deselect it"
 msgstr ""
 
@@ -2194,14 +2145,8 @@ msgstr ""
 "(hra, ma, lta, atď.) a variabilný základ."
 
 #. module: payroll
-#: model:ir.model,name:payroll.model_hr_leave_type
-msgid "Time Off Type"
-msgstr ""
-
-#. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid ""
 "To cancel the Original Payslip the\n"
 "                        Refunded Payslip needs to be canceled first!"
@@ -2283,7 +2228,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid ""
 "Wrong percentage base or quantity defined for salary rule %(nm)s (%(code)s) "
 "for employee %(ee)s."
@@ -2292,7 +2236,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid ""
 "Wrong quantity defined for salary rule %(nm)s (%(code)s) for employee %(ee)s."
 msgstr ""
@@ -2300,7 +2243,6 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_salary_rule.py:0
-#, python-format
 msgid ""
 "Wrong range condition defined for salary rule %(nm)s (%(code)s) for employee "
 "%(ee)s."
@@ -2309,29 +2251,30 @@ msgstr ""
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payroll_structure.py:0
-#, python-format
 msgid "You cannot create a recursive salary structure."
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip.py:0
-#, python-format
 msgid "You cannot delete a payslip which is not draft or cancelled"
 msgstr ""
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/wizard/hr_payroll_payslips_by_employees.py:0
-#, python-format
 msgid "You must select employee(s) to generate payslip(s)."
 msgstr "Musíte vybrať zamestnanca(ov) pre generovanie výplatnej pásky (pások)."
 
 #. module: payroll
 #. odoo-python
 #: code:addons/payroll/models/hr_payslip_line.py:0
-#, python-format
 msgid "You must set a contract to create a payslip line."
+msgstr ""
+
+#. module: payroll
+#: model_terms:ir.ui.view,arch_db:payroll.hr_payslip_view_form
+msgid "period"
 msgstr ""
 
 #. module: payroll

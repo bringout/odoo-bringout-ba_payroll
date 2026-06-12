@@ -4,7 +4,7 @@
 
 {
     "name": "BA Payroll",
-    "version": "16.0.1.6.0",
+    "version": "19.0.1.0.0",
     "category": "Payroll",
     "website": "https://github.com/OCA/payroll",
     "sequence": 38,
@@ -12,7 +12,6 @@
     "license": "LGPL-3",
     "author": "Odoo SA, Odoo Community Association (OCA)",
     "depends": [
-        "hr_contract",
         "hr_holidays",
         "mail",
     ],
@@ -30,7 +29,6 @@
         "views/hr_salary_rule_views.xml",
         "views/hr_payslip_line_views.xml",
         "views/hr_payslip_views.xml",
-        "views/hr_payslip_input_views.xml",
         "views/hr_payslip_run_views.xml",
         "views/report_contributionregister.xml",
         "views/report_payslip.xml",
@@ -42,5 +40,5 @@
     ],
     "demo": ["demo/hr_payroll_demo.xml"],
     "application": True,
-    "maintainers": ["norlinhenrik", "nimarosa"],
+    "maintainers": ["appstogrow", "nimarosa"],
 }
